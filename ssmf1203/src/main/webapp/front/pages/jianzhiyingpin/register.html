@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+	    <link rel="stylesheet" type="text/css" href="../../xznstatic/css/public.css"/>
+	    <link rel="stylesheet" type="text/css" href="../../xznstatic/css/login.css"/>
+	    <style type="text/css">
+	        .layui-form-label {width: 70px!important;}
+	        .layui-input-block {margin-left: 80px!important;}
+	    </style>
+	</head>
+	<body>
+		<div class="reg">
+			<form class="layui-form login-form">
+				<h1><a href="#"><img src="../../xznstatic/img/logo.png"></a></h1>
+            	<p>兼职应聘注册</p>		
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">商家账号：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="shangjiazhanghao" name="shangjiazhanghao" placeholder="请输入商家账号" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">商家名称：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="shangjiamingcheng" name="shangjiamingcheng" placeholder="请输入商家名称" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">兼职岗位：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="jianzhigangwei" name="jianzhigangwei" placeholder="请输入兼职岗位" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">岗位薪酬：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="gangweixinchou" name="gangweixinchou" placeholder="请输入岗位薪酬" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">工作天数：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="gongzuotianshu" name="gongzuotianshu" placeholder="请输入工作天数" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">工作时长：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="gongzuoshizhang" name="gongzuoshizhang" placeholder="请输入工作时长" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">学号：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="xuehao" name="xuehao" placeholder="请输入学号" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">姓名：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="xingming" name="xingming" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">性别：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="xingbie" name="xingbie" placeholder="请输入性别" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">年龄：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="nianling" name="nianling" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">专业：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="zhuanye" name="zhuanye" placeholder="请输入专业" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">电话：</label>
+						<div class="layui-input-inline" style="width: 300px;">
+							<input type="text" id="dianhua" name="dianhua" placeholder="请输入电话" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</p>
+				<p>
+					<div class="layui-form-item">
+		                <div class="layui-input-block" style="text-align: right;margin-right: 100px;">
+		                    <button class="layui-btn layui-btn-fluid layui-btn-danger btn-submit" lay-submit lay-filter="register" style="width: 280px;">注册</button>
+		                </div>
+            		</div>
+            	</p>
+            	<p class="txt"><a href="javascript:window.location.href='../login/login.html'"><span></span>已有账号登录</a></p>
+			</form>
+		</div>
+
+		<script src="../../layui/layui.js"></script>
+		<script src="../../js/vue.js"></script>
+		<!-- 组件配置信息 -->
+		<script src="../../js/config.js"></script>
+		<!-- 扩展插件配置信息 -->
+		<script src="../../modules/config.js"></script>
+		<!-- 工具方法 -->
+		<script src="../../js/utils.js"></script>
+		<!-- 校验格式工具类 -->
+		<script src="../../js/validate.js"></script>
+
+		<script>
+			layui.use(['layer', 'element', 'carousel', 'form', 'http', 'jquery'], function() {
+				var layer = layui.layer;
+				var element = layui.element;
+				var carousel = layui.carousel;
+				var form = layui.form;
+				var http = layui.http;
+				var jquery = layui.jquery;
+
+				var tablename = http.getParam('tablename');
+								
+				// 注册
+				form.on('submit(register)', function(data) {
+					data = data.field;
+                    					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                            					                                                                                                                                                                http.requestJson(tablename + '/register', 'post', data, function(res) {
+						layer.msg('注册成功', {
+							time: 2000,
+							icon: 6
+						},function(){
+							// 路径访问设置
+							window.location.href = '../login/login.html';
+						});
+					});
+					return false
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>首页</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="order by mobanxiu.cn" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="../../layui/css/layui.css">
+<link rel="stylesheet" href="../../xznstatic/css/common.css"/>
+<link rel="stylesheet" href="../../xznstatic/css/style.css"/>
+<script src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
+<script src="../../xznstatic/js/jquery.SuperSlide.2.1.1.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="banner">
+      <div class="bd">
+        <ul>
+          <li v-for="(item,index) in swiperList" v-bind:key="index"><img style="width: 1920px;height: 492px;" :src="item.img" /></li>
+        </ul>
+        <div class="hd">
+          <ul>
+            <li v-for="(item,index) in swiperList" v-bind:key="index"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="content">
+
+      <div class="section1">
+        <div class="news">
+          <div class="title">
+            <h2 style="font-size: 32px;color: #fff;font-weight: bold;"> HOME NEWS </h2>
+            <p style="font-size: 24px;color: #fff;"> 系统公告 </p>
+          </div>
+          <div class="n_left">
+            <div id="ifocus">
+              <div id="ifocus_pic">
+                <div id="ifocus_piclist">
+                  <ul>
+                    <li v-for="(item,index) in newsList" v-bind:key="index" v-if="item.picture.substr(0,7)=='http://'"><img :src="item.picture" width="305" height="238" /></a></li>
+                  </ul>
+                </div>
+                <div id="ifocus_tx">
+                  <ul>
+                    <li v-for="(item,index) in newsList" v-bind:key="index" v-if="item.picture.substr(0,7)=='http://'"><a href="#" @click="jump('../news/detail.html?id='+item.id)">{{item.title}}</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div id="ifocus_btn">
+                <ul>
+                  <li v-for="(item,index) in newsList" v-bind:key="index" v-if="item.picture.substr(0,7)=='http://'"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="n_right">
+            <ul>
+              <li v-for="(item,index) in newsList" v-bind:key="index" v-if="item">
+                <span class="date">{{((new Date()).getMonth()+1).toString().length == 1 ? "0" + ((new Date()).getMonth()+1).toString() : ((new Date()).getMonth()+1).toString()}}</span>
+                <div class="info"><a href="#" @click="jump('../news/detail.html?id='+item.id)">{{item.title}}</a>{{item.content|newsDesc}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="student">
+        <div class="title">
+          <h2 style="font-size: 32px;color: red;font-weight: bold;"> DATA SHOW </h2>
+          <p style="font-size: 24px;color: red;"> 兼职招聘展示 </p>
+        </div>
+        <div class="list"> </div>
+        <div class="product_list">
+          <div class="bd">
+            <ul class="picList">
+              <li @click="jump('../jianzhizhaopin/detail.html?id='+item.id)"  v-for="(item,index) in jianzhizhaopinList" v-bind:key="index" v-if="item">
+                <a href="#" class="photo"><img :src="item.zhaopinfengmian?item.zhaopinfengmian.split(',')[0]:''" width="166" height="166" /></a>
+                <a href="#" class="name">{{item.zhaopinbiaoti}}</a>
+                <a v-if="item.price" href="#" class="name">{{item.price}} RMB</a>              
+              </li>
+            </ul>
+          </div>
+          <div class="hd"> <a class="prev"></a> <a class="next"></a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <script src="../../layui/layui.js"></script>
+  <script src="../../js/vue.js"></script>
+  <script src="../../js/config.js"></script>
+  <script src="../../modules/config.js"></script>
+  <script src="../../js/utils.js"></script>
+  <script type="text/javascript">
+    var vue = new Vue({
+      el: '#app',
+      data: {
+
+        jianzhizhaopinList: [],
+        swiperList: [],
+        // 系统公告
+        newsList: [],
+        leftNewsList: [],
+        rightNewsList: []
+      },
+      filters: {
+        newsDesc: function(val) {
+          if (val) {
+            val = val.replace(/<[^<>]+>/g, '').replace(/undefined/g, '');
+            if (val.length > 60) {
+              val = val.substring(0, 60);
+            }
+
+            return val;
+          }
+          return '';
+        }
+      },
+      methods: {
+        jump(url) {
+          jump(url)
+        }
+      }
+    });
+
+    layui.use(['layer', 'form', 'element', 'carousel', 'http', 'jquery'], function() {
+      var layer = layui.layer;
+      var element = layui.element;
+      var form = layui.form;
+      var carousel = layui.carousel;
+      var http = layui.http;
+      var jquery = layui.jquery;
+
+      // 获取轮播图 数据
+      http.request('config/list', 'get', {
+        page: 1,
+        limit: 5
+      }, function(res) {
+        if (res.data.list.length > 0) {
+          let swiperList = [];
+          res.data.list.forEach(element => {
+            if (element.value != null) {
+              swiperList.push({
+                img: element.value
+              });
+            }
+          });
+          vue.swiperList = swiperList;
+          vue.$nextTick(()=>{
+            window.xznSlide();
+          });
+        }
+      });
+
+      // 系统公告
+      http.request('news/list', 'get', {
+        page: 1,
+        limit: 3,
+        order: 'desc'
+      }, function(res) {
+        var newsList = res.data.list;
+        vue.newsList = newsList;
+        if (newsList.length > 0 && newsList.length <= 2) {
+          vue.leftNewsList = res.data.list
+        } else {
+          var leftNewsList = []
+          for (let i = 0; i <= 2; i++) {
+            leftNewsList.push(newsList[i]);
+          }
+          vue.leftNewsList = leftNewsList
+        }
+        if (newsList.length > 2 && newsList.length <= 8) {
+          var rightNewsList = []
+          for (let i = 3; i <= newsList.length; i++) {
+            rightNewsList.push(newsList[i]);
+          }
+          vue.rightNewsList = rightNewsList
+        }
+      });
+                  
+              
+      http.request(`jianzhizhaopin/list`, 'get', {
+        page: 1,
+        limit: 10
+      }, function(res) {
+        vue.jianzhizhaopinList = res.data.list;
+        vue.$nextTick(()=>{
+          window.xznSlide();
+        });
+      });
+  });
+
+  window.xznSlide = function() {
+    jQuery(".banner").slide({mainCell:".bd ul",autoPlay:true,interTime:5000});
+    jQuery("#ifocus").slide({ titCell:"#ifocus_btn li", mainCell:"#ifocus_piclist ul",effect:"leftLoop", delayTime:200, autoPlay:true,triggerTime:0});
+    jQuery("#ifocus").slide({ titCell:"#ifocus_btn li", mainCell:"#ifocus_tx ul",delayTime:0, autoPlay:true});
+    jQuery(".product_list").slide({mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,trigger:"click",interTime:4000});
+  };  
+</script>
+<script src="../../xznstatic/js/index.js"></script>
+</body>
+</html>
